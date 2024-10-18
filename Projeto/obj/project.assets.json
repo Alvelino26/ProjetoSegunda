@@ -487,11 +487,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\alvel\\DesenvolvimentoAPI\\Danone\\Projeto\\Projeto.csproj",
+      "projectUniqueName": "C:\\Users\\alvel\\Downloads\\DesenvolvimentoAPI\\Danone\\Projeto\\Projeto.csproj",
       "projectName": "Projeto",
-      "projectPath": "C:\\Users\\alvel\\DesenvolvimentoAPI\\Danone\\Projeto\\Projeto.csproj",
+      "projectPath": "C:\\Users\\alvel\\Downloads\\DesenvolvimentoAPI\\Danone\\Projeto\\Projeto.csproj",
       "packagesPath": "C:\\Users\\alvel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\alvel\\DesenvolvimentoAPI\\Danone\\Projeto\\obj\\",
+      "outputPath": "C:\\Users\\alvel\\Downloads\\DesenvolvimentoAPI\\Danone\\Projeto\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\alvel\\AppData\\Roaming\\NuGet\\NuGet.Config"
