@@ -6,5 +6,3 @@ public class Abrigo
     public string? Telefone { get; set; }
     public ICollection<Animal>? Animais { get; set; }
 }
-
-//teste rambo 22
