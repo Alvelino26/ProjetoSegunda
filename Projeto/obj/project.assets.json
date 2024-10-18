@@ -2852,24 +2852,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\alvel\\.nuget\\packages\\": {}
+    "C:\\Users\\gabriel.silva\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\alvel\\Downloads\\DesenvolvimentoAPI\\Danone\\Projeto\\Projeto.csproj",
+      "projectUniqueName": "C:\\Users\\gabriel.silva\\Desktop\\potrinha\\ProjetoSegunda\\Projeto\\Projeto.csproj",
       "projectName": "Projeto",
-      "projectPath": "C:\\Users\\alvel\\Downloads\\DesenvolvimentoAPI\\Danone\\Projeto\\Projeto.csproj",
-      "packagesPath": "C:\\Users\\alvel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\alvel\\Downloads\\DesenvolvimentoAPI\\Danone\\Projeto\\obj\\",
+      "projectPath": "C:\\Users\\gabriel.silva\\Desktop\\potrinha\\ProjetoSegunda\\Projeto\\Projeto.csproj",
+      "packagesPath": "C:\\Users\\gabriel.silva\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\gabriel.silva\\Desktop\\potrinha\\ProjetoSegunda\\Projeto\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\alvel\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\gabriel.silva\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
