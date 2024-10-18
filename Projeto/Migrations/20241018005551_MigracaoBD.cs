@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
-
+alisson
 namespace Projeto.Migrations
 {
     /// <inheritdoc />
