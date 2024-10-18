@@ -23,10 +23,17 @@ if (app.Environment.IsDevelopment())
 
 
 
-app.MapPost("/animais/cadastrar", ([FromBody] Animal animal, [FromServices] GerenciamentoAdocaoContext ctx) =>
+app.MapPost("/animais/cadastrar", async ([FromBody] Animal animal, [FromServices] GerenciamentoAdocaoContext ctx) =>
 {
+    // Verifique se o abrigo existe
+    var abrigo = await ctx.Abrigos.FindAsync(animal.AbrigoId);
+    if (abrigo == null)
+    {
+        return Results.BadRequest("Abrigo não encontrado.");
+    }
+
     ctx.Animais.Add(animal);
-    ctx.SaveChanges();
+    await ctx.SaveChangesAsync();
     return Results.Created($"/animais/{animal.Id}", animal);
 });
 

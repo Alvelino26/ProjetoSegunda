@@ -21,12 +21,18 @@ namespace Projeto.Data
                 optionsBuilder.UseSqlite("Data Source=gerenciamento_adocao.db");
             }
         }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-        modelBuilder.Entity<Abrigo>()
-            .HasKey(a => a.Id);
-       
+            modelBuilder.Entity<Abrigo>().HasData(
+                new Abrigo { Id = 1, Nome = "Abrigo A" },
+                new Abrigo { Id = 2, Nome = "Abrigo B" }
+            );
+
+            modelBuilder.Entity<Animal>().HasData(
+                new Animal { Id = 1, Nome = "Picles", Especie = "Cachorro", Raca = "Golden Retriever", Idade = 2, DisponivelParaAdocao = true, AbrigoId = 1 }
+            );
+
+        
         }
     }
 }

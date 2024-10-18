@@ -1,4 +1,4 @@
-POST http://localhost:5080/animais
+POST http://localhost:5080/animais/cadastrar
 Content-Type: application/json
 
 {
@@ -7,13 +7,14 @@ Content-Type: application/json
     "raca": "Labrador",
     "idade": 5,
     "disponivelParaAdocao": true,
-    "abrigoId": 1
+    "abrigoId": "1"
 }
 
 ###
 
 GET http://localhost:5080/animais
 Accept: application/json
+
 
 ###
 
