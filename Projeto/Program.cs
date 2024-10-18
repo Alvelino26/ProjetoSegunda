@@ -1,5 +1,6 @@
 using Projeto.Data; 
-using Microsoft.EntityFrameworkCore; 
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,10 +23,10 @@ if (app.Environment.IsDevelopment())
 
 
 
-app.MapPost("/animais", async (Animal animal, GerenciamentoAdocaoContext context) =>
+app.MapPost("/animais/cadastrar", ([FromBody] Animal animal, [FromServices] GerenciamentoAdocaoContext ctx) =>
 {
-    context.Animais.Add(animal);
-    await context.SaveChangesAsync();
+    ctx.Animais.Add(animal);
+    ctx.SaveChanges();
     return Results.Created($"/animais/{animal.Id}", animal);
 });
 

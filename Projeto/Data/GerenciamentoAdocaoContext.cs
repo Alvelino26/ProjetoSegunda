@@ -24,7 +24,9 @@ namespace Projeto.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+        modelBuilder.Entity<Abrigo>()
+            .HasKey(a => a.Id);
+       
         }
     }
 }
