@@ -70,7 +70,7 @@ app.MapPost("/adocoes", async (Adocao adocao, GerenciamentoAdocaoContext context
     if (adotante is null)
         return Results.BadRequest("Adotante não encontrado");
 
-    animal.DisponivelParaAdocao = false;  // Atualizando status do animal
+    animal.DisponivelParaAdocao = false;  
     adocao.Status = "Pendente";
     context.Adocoes.Add(adocao);
     await context.SaveChangesAsync();

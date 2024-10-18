@@ -9,14 +9,22 @@ namespace Projeto.Data
         public DbSet<Adotante> Adotantes { get; set; }
         public DbSet<Adocao> Adocoes { get; set; }
 
+        // Construtor que aceita DbContextOptions
+        public GerenciamentoAdocaoContext(DbContextOptions<GerenciamentoAdocaoContext> options) 
+            : base(options) { }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=gerenciamento_adocao.db");
+            
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlite("Data Source=gerenciamento_adocao.db");
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Configurações adicionais (se necessário)
+            
         }
     }
 }
