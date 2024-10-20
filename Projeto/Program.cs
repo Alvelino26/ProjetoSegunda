@@ -1,89 +1,116 @@
-using Projeto.Data; 
+using Adopet.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-
-builder.Services.AddDbContext<GerenciamentoAdocaoContext>(options =>
-    options.UseSqlite("Data Source=gerenciamento_adocao.db"));
+// Configuração do banco de dados
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlite("Data Source=BancoAdopet.db"));
 
 var app = builder.Build();
 
-
-if (app.Environment.IsDevelopment())
+// Rotas para gerenciar abrigos
+app.MapPost("/adopet/abrigos/cadastrar", async ([FromBody] Abrigo abrigo, [FromServices] AppDbContext ctx) =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    ctx.Abrigos.Add(abrigo);
+    await ctx.SaveChangesAsync();
+    return Results.Created($"/adopet/abrigos/{abrigo.AbrigoId}", abrigo);
+});
 
-
-
-app.MapPost("/animais/cadastrar", async ([FromBody] Animal animal, [FromServices] GerenciamentoAdocaoContext ctx) =>
+app.MapGet("/adopet/abrigos/listar", async ([FromServices] AppDbContext ctx) =>
 {
-    // Verifique se o abrigo existe
-    var abrigo = await ctx.Abrigos.FindAsync(animal.AbrigoId);
-    if (abrigo == null)
-    {
-        return Results.BadRequest("Abrigo não encontrado.");
-    }
+    var abrigos = await ctx.Abrigos.ToListAsync();
+    return abrigos.Any() ? Results.Ok(abrigos) : Results.NotFound();
+});
 
+// Rotas para gerenciar animais
+app.MapPost("/adopet/animais/cadastrar", async ([FromBody] Animal animal, [FromServices] AppDbContext ctx) =>
+{
     ctx.Animais.Add(animal);
     await ctx.SaveChangesAsync();
-    return Results.Created($"/animais/{animal.Id}", animal);
+    return Results.Created($"/adopet/animais/{animal.AnimalId}", animal);
 });
 
-app.MapGet("/animais", async (GerenciamentoAdocaoContext context) =>
+app.MapGet("/adopet/animais/listar", async ([FromServices] AppDbContext ctx) =>
 {
-    var animais = await context.Animais.Include(a => a.Abrigo).ToListAsync();
-    return Results.Ok(animais);
+    var animais = await ctx.Animais.ToListAsync();
+    return animais.Any() ? Results.Ok(animais) : Results.NotFound();
 });
 
-app.MapPut("/animais/{id}", async (int id, Animal dadosAtualizados, GerenciamentoAdocaoContext context) =>
+app.MapPut("/adopet/animais/{id}", async (int id, [FromBody] Animal animalAtualizado, [FromServices] AppDbContext ctx) =>
 {
-    var animal = await context.Animais.FindAsync(id);
-    if (animal is null) return Results.NotFound();
+    var animal = await ctx.Animais.FindAsync(id);
+    if (animal == null)
+    {
+        return Results.NotFound();
+    }
+    animal.Nome = animalAtualizado.Nome;
+    animal.Especie = animalAtualizado.Especie;
+    animal.Raca = animalAtualizado.Raca;
+    animal.Idade = animalAtualizado.Idade;
+    animal.DisponivelParaAdocao = animalAtualizado.DisponivelParaAdocao;
+    animal.AbrigoId = animalAtualizado.AbrigoId;
+    await ctx.SaveChangesAsync();
+    return Results.Ok(animal);
+});
 
-    animal.Nome = dadosAtualizados.Nome;
-    animal.Especie = dadosAtualizados.Especie;
-    animal.Raca = dadosAtualizados.Raca;
-    animal.Idade = dadosAtualizados.Idade;
-    animal.DisponivelParaAdocao = dadosAtualizados.DisponivelParaAdocao;
-
-    await context.SaveChangesAsync();
+app.MapDelete("/adopet/animais/{id}", async (int id, [FromServices] AppDbContext ctx) =>
+{
+    var animal = await ctx.Animais.FindAsync(id);
+    if (animal == null) return Results.NotFound();
+    ctx.Animais.Remove(animal);
+    await ctx.SaveChangesAsync();
     return Results.NoContent();
 });
 
-app.MapDelete("/animais/{id}", async (int id, GerenciamentoAdocaoContext context) =>
+// Rotas para gerenciar adotantes
+app.MapPost("/adopet/adotantes/cadastrar", async ([FromBody] Adotante adotante, [FromServices] AppDbContext ctx) =>
 {
-    var animal = await context.Animais.FindAsync(id);
-    if (animal is null) return Results.NotFound();
-
-    context.Animais.Remove(animal);
-    await context.SaveChangesAsync();
-    return Results.NoContent();
+    ctx.Adotantes.Add(adotante);
+    await ctx.SaveChangesAsync();
+    return Results.Created($"/adopet/adotantes/{adotante.AdotanteId}", adotante);
 });
 
-app.MapPost("/adocoes", async (Adocao adocao, GerenciamentoAdocaoContext context) =>
+app.MapGet("/adopet/adotantes/listar", async ([FromServices] AppDbContext ctx) =>
 {
-    var animal = await context.Animais.FindAsync(adocao.AnimalId);
-    if (animal is null || !animal.DisponivelParaAdocao)
-        return Results.BadRequest("Animal não disponível para adoção");
+    var adotantes = await ctx.Adotantes.ToListAsync();
+    return Results.Ok(adotantes);
+});
 
-    var adotante = await context.Adotantes.FindAsync(adocao.AdotanteId);
-    if (adotante is null)
-        return Results.BadRequest("Adotante não encontrado");
+// Rotas para gerenciar adoções
+app.MapPost("/adopet/adocoes/cadastrar", async ([FromBody] Adocao adocao, [FromServices] AppDbContext ctx) =>
+{
+    ctx.Adocoes.Add(adocao);
+    await ctx.SaveChangesAsync();
+    return Results.Created($"/adopet/adocoes/{adocao.AdocaoId}", adocao);
+});
 
-    animal.DisponivelParaAdocao = false;  
-    adocao.Status = "Pendente";
-    context.Adocoes.Add(adocao);
-    await context.SaveChangesAsync();
+app.MapGet("/adopet/adocoes/listar", async ([FromServices] AppDbContext ctx) =>
+{
+    var adocoes = await ctx.Adocoes.ToListAsync();
+    return Results.Ok(adocoes);
+});
 
-    return Results.Created($"/adocoes/{adocao.Id}", adocao);
+app.MapPut("/adopet/adocoes/{id}", async (int id, [FromBody] Adocao adocaoAtualizada, [FromServices] AppDbContext ctx) =>
+{
+    var adocao = await ctx.Adocoes.FindAsync(id);
+    if (adocao == null)
+    {
+        return Results.NotFound();
+    }
+    adocao.Status = adocaoAtualizada.Status;
+    await ctx.SaveChangesAsync();
+    return Results.Ok(adocao);
+});
+
+app.MapDelete("/adopet/adocoes/{id}", async (int id, [FromServices] AppDbContext ctx) =>
+{
+    var adocao = await ctx.Adocoes.FindAsync(id);
+    if (adocao == null) return Results.NotFound();
+    ctx.Adocoes.Remove(adocao);
+    await ctx.SaveChangesAsync();
+    return Results.NoContent();
 });
 
 app.Run();

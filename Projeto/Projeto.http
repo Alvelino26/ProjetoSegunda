@@ -1,4 +1,6 @@
-POST http://localhost:5080/animais/cadastrar
+
+### CADASTRAR ANIMAL
+POST http://localhost:5286/adopet/animais/cadastrar
 Content-Type: application/json
 
 {
@@ -7,78 +9,13 @@ Content-Type: application/json
     "raca": "Labrador",
     "idade": 5,
     "disponivelParaAdocao": true,
-    "abrigoId": "1"
-}
-
-###
-
-GET http://localhost:5080/animais
-Accept: application/json
-
-
-###
-
-PUT http://localhost:5080/animais/1
-Content-Type: application/json
-
-{
-    "nome": "Rex",
-    "especie": "Cachorro",
-    "raca": "Labrador",
-    "idade": 6,
-    "disponivelParaAdocao": false,
     "abrigoId": 1
 }
 
-###
-
-DELETE http://localhost:5080/animais/1
-
-###
-
-POST http://localhost:5080/adocoes
-Content-Type: application/json
-
-{
-    "adotanteId": 1,
-    "animalId": 1,
-    "dataAdocao": "2024-10-18T14:30:00",
-    "status": "Pendente"
-}
-
-###
-
-GET http://localhost:5080/adocoes
+### LISTAR ANIMAIS
+GET http://localhost:5286/adopet/animais/listar
 Accept: application/json
 
-###
+### EXCLUIR ANIMAL
+DELETE http://localhost:5286/adopet/animais/24
 
-PUT http://localhost:5080/adocoes/1
-Content-Type: application/json
-
-{
-    "status": "Concluída"
-}
-
-###
-
-POST http://localhost:5080/abrigos
-Content-Type: application/json
-
-{
-    "nome": "Abrigo São Francisco",
-    "endereco": "Rua A, 123",
-    "telefone": "123456789"
-}
-
-###
-
-POST http://localhost:5080/adotantes
-Content-Type: application/json
-
-{
-    "nome": "Gabriel Silva",
-    "cpf": "12345678901",
-    "endereco": "Rua B, 456",
-    "telefone": "987654321"
-}
