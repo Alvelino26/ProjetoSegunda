@@ -1,21 +1,22 @@
 using Microsoft.EntityFrameworkCore;
+using Projeto.Models;  
 
-namespace Adopet.Models
+namespace Projeto.Data
 {
-    public class AppDbContext : DbContext
+    public class GerenciamentoAdocaoContext : DbContext
     {
         public DbSet<Abrigo> Abrigos { get; set; }
         public DbSet<Animal> Animais { get; set; }
         public DbSet<Adotante> Adotantes { get; set; }
         public DbSet<Adocao> Adocoes { get; set; }
 
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+        public GerenciamentoAdocaoContext(DbContextOptions<GerenciamentoAdocaoContext> options) : base(options) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlite("Data Source=BancoAdopet.db");
+                optionsBuilder.UseSqlite("Data Source=gerenciamento_adocao.db");
             }
         }
 

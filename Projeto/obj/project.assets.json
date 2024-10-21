@@ -2852,19 +2852,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\alisson.silva\\.nuget\\packages\\": {}
+    "C:\\Users\\alvel\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\alisson.silva\\Downloads\\Lipos\\ProjetoSegunda\\Projeto\\Projeto.csproj",
+      "projectUniqueName": "C:\\Users\\alvel\\Downloads\\DesenvolvimentoAPI\\ProjetoSegunda\\Projeto\\Projeto.csproj",
       "projectName": "Projeto",
-      "projectPath": "C:\\Users\\alisson.silva\\Downloads\\Lipos\\ProjetoSegunda\\Projeto\\Projeto.csproj",
-      "packagesPath": "C:\\Users\\alisson.silva\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\alisson.silva\\Downloads\\Lipos\\ProjetoSegunda\\Projeto\\obj\\",
+      "projectPath": "C:\\Users\\alvel\\Downloads\\DesenvolvimentoAPI\\ProjetoSegunda\\Projeto\\Projeto.csproj",
+      "packagesPath": "C:\\Users\\alvel\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\alvel\\Downloads\\DesenvolvimentoAPI\\ProjetoSegunda\\Projeto\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\alisson.silva\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\alvel\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"

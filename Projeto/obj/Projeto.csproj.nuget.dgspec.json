@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alisson.silva\\Downloads\\Lipos\\ProjetoSegunda\\projeto\\Projeto.csproj": {}
+    "C:\\Users\\alvel\\Downloads\\DesenvolvimentoAPI\\ProjetoSegunda\\Projeto\\Projeto.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alisson.silva\\Downloads\\Lipos\\ProjetoSegunda\\projeto\\Projeto.csproj": {
+    "C:\\Users\\alvel\\Downloads\\DesenvolvimentoAPI\\ProjetoSegunda\\Projeto\\Projeto.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alisson.silva\\Downloads\\Lipos\\ProjetoSegunda\\projeto\\Projeto.csproj",
+        "projectUniqueName": "C:\\Users\\alvel\\Downloads\\DesenvolvimentoAPI\\ProjetoSegunda\\Projeto\\Projeto.csproj",
         "projectName": "Projeto",
-        "projectPath": "C:\\Users\\alisson.silva\\Downloads\\Lipos\\ProjetoSegunda\\projeto\\Projeto.csproj",
-        "packagesPath": "C:\\Users\\alisson.silva\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alisson.silva\\Downloads\\Lipos\\ProjetoSegunda\\projeto\\obj\\",
+        "projectPath": "C:\\Users\\alvel\\Downloads\\DesenvolvimentoAPI\\ProjetoSegunda\\Projeto\\Projeto.csproj",
+        "packagesPath": "C:\\Users\\alvel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\alvel\\Downloads\\DesenvolvimentoAPI\\ProjetoSegunda\\Projeto\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\alisson.silva\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\alvel\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"

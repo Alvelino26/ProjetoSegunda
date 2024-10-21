@@ -1,4 +1,4 @@
-namespace Adopet.Models
+namespace Projeto.Models
 {
     public class Abrigo
     {
